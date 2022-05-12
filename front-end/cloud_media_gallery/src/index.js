@@ -6,16 +6,13 @@ import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import HomePage from "./components/HomePage";
+import * as Pages from "./pages";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<App />}/>
-        <Route path="/home" element={<HomePage/>}/>
-
-      </Routes>
+      <App />
     </BrowserRouter>
   </React.StrictMode>
 );
