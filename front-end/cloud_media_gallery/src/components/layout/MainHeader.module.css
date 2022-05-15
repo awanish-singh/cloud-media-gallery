@@ -1,6 +1,10 @@
 .header {
   padding: 1rem;
   background-color: var(--primaryColor);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   position: absolute;
   top: 0;
   left: 0;
@@ -15,4 +19,55 @@
   font-size: 24px;
   color: var(--primaryBackgroundColor);
   position: relative;
+}
+
+.actions {
+  margin-right: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.user {
+  margin-left: 2rem;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.user:hover {
+  box-shadow: 0px 0px 10px 5px var(--secondaryColor);
+}
+
+.user div {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: var(--primaryBackgroundColor);
+  text-align: center;
+  padding: 18%;
+}
+
+.user div p {
+  margin: 0;
+  color: var(--primaryColor);
+  /* height: 100%;
+  width: 100%; */
+  /* text-align: center; */
+  line-height: 100%;
+  font-size: 32px;
+  font-weight: 500;
+}
+.upload {
+  cursor: pointer;
+  padding: 8px 16px 8px 16px;
+  border-radius: 10px;
+}
+.upload:hover {
+  background-color: var(--secondaryColor);
+}
+.upload p {
+  color: var(--primaryBackgroundColor);
+  font-weight: bold;
+  margin: 0;
 }
