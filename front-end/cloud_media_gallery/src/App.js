@@ -9,20 +9,25 @@ import MainHeader from "./components/layout/MainHeader";
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
+      <MainHeader pseudo={true} />
       <MainHeader />
-      <MainNavigation />
-      <Routes>
-        <Route path="/" element={<Pages.HomePage />} />
-        <Route path="albums" element={<Pages.AlbumsPage />} />
-        <Route path="album/:albumId" element={<Pages.AlbumPage />} />
-        <Route path="events" element={<Pages.EventsPage />} />
-        <Route path="event/:eventId" element={<Pages.EventPage />} />
-        <Route path="explore" element={<Pages.ExplorePage />} />
-        <Route path="media/:mediaId" element={<Pages.MediaDetailPage />} />
-        <Route path="share" element={<Pages.SharePage />} />
-        <Route path="*" element={<Pages.NotFound />} />
-      </Routes>
+      <div className="main">
+        <MainNavigation />
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Pages.HomePage />} />
+            <Route path="albums" element={<Pages.AlbumsPage />} />
+            <Route path="album/:albumId" element={<Pages.AlbumPage />} />
+            <Route path="events" element={<Pages.EventsPage />} />
+            <Route path="event/:eventId" element={<Pages.EventPage />} />
+            <Route path="explore" element={<Pages.ExplorePage />} />
+            <Route path="media/:mediaId" element={<Pages.MediaDetailPage />} />
+            <Route path="share" element={<Pages.SharePage />} />
+            <Route path="*" element={<Pages.NotFound />} />
+          </Routes>
+        </div>
+      </div>
     </div>
   );
 }
