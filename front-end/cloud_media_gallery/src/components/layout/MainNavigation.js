@@ -1,23 +1,38 @@
 import { NavLink } from "react-router-dom";
 
+import classes from "./MainNavigation.module.css";
+
 const MainNavigation = () => {
+  const checkActive = ({ isActive }) => {
+    return isActive ? classes.active : "";
+  };
   return (
-    <nav>
+    <nav className={classes.nav}>
       <ul>
         <li>
-          <NavLink to="/">All Media</NavLink>
+          <NavLink className={checkActive} to="/">
+            <p>All Media</p>
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/explore">Explore</NavLink>
+          <NavLink className={checkActive} to="/explore">
+            <p>Explore</p>
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/Share">Sharing</NavLink>
+          <NavLink className={checkActive} to="/Share">
+            <p>Sharing</p>
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/Albums">Albums</NavLink>
+          <NavLink className={checkActive} to="/Albums">
+            <p>Albums</p>
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/Events">Events</NavLink>
+          <NavLink className={checkActive} to="/Events">
+            <p>Events</p>
+          </NavLink>
         </li>
       </ul>
     </nav>
