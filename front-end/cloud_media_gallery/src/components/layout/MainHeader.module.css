@@ -19,6 +19,7 @@
   font-size: 24px;
   color: var(--primaryBackgroundColor);
   position: relative;
+  margin: 0;
 }
 
 .actions {
@@ -70,4 +71,8 @@
   color: var(--primaryBackgroundColor);
   font-weight: bold;
   margin: 0;
+}
+
+.upload p span {
+  margin-right: 4px;
 }

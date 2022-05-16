@@ -1,3 +1,6 @@
+import { MdOutlineFileUpload } from "react-icons/md";
+import { IconContext } from "react-icons";
+
 import classes from "./MainHeader.module.css";
 
 const MainHeader = (props) => {
@@ -12,7 +15,14 @@ const MainHeader = (props) => {
       <h1>Cloud Media Gallery</h1>
       <div className={classes.actions}>
         <div className={classes.upload}>
-          <p>Upload</p>
+          <p>
+            <IconContext.Provider value={{ size: "24px" }}>
+              <span>
+                <MdOutlineFileUpload />
+              </span>
+            </IconContext.Provider>
+            Upload
+          </p>
         </div>
         <div className={classes.user}>
           <div>
