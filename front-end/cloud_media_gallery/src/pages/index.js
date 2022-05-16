@@ -6,4 +6,5 @@ export { default as EventPage } from "./Event";
 export { default as ExplorePage } from "./Explore";
 export { default as MediaDetailPage } from "./MediaDetail";
 export { default as SharePage } from "./Share";
+export { default as PeoplePage } from "./People";
 export { default as NotFound } from "./NotFound";

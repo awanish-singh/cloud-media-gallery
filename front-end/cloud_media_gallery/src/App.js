@@ -21,6 +21,7 @@ function App() {
             <Route path="/" element={<Pages.HomePage />} />
             <Route path="albums" element={<Pages.AlbumsPage />} />
             <Route path="album/:albumId" element={<Pages.AlbumPage />} />
+            <Route path="people" element={<Pages.PeoplePage />} />
             <Route path="events" element={<Pages.EventsPage />} />
             <Route path="event/:eventId" element={<Pages.EventPage />} />
             <Route path="explore" element={<Pages.ExplorePage />} />

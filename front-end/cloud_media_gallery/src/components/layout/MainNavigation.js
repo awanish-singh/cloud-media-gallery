@@ -41,7 +41,7 @@ const MainNavigation = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink className={checkActive} to="/Share">
+            <NavLink className={checkActive} to="/share">
               <p>
                 <span className={classes.icon}>
                   <MdOutlineFolderShared />
@@ -51,7 +51,7 @@ const MainNavigation = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink className={checkActive} to="/Albums">
+            <NavLink className={checkActive} to="/albums">
               <p>
                 <span className={classes.icon}>
                   <MdOutlinePhotoAlbum />
@@ -61,7 +61,17 @@ const MainNavigation = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink className={checkActive} to="/Events">
+            <NavLink className={checkActive} to="/people">
+              <p>
+                <span className={classes.icon}>
+                  <MdOutlinePeopleAlt />
+                </span>
+                People
+              </p>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className={checkActive} to="/events">
               <p>
                 <span className={classes.icon}>
                   <MdOutlineEventNote />
