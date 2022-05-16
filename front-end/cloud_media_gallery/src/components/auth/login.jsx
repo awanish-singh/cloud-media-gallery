@@ -1,127 +1,43 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { Button, Form, Grid, Header, Image, Message, Segment,
- Loader } from 'semantic-ui-react'
-
-
-class LoginForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-      errors: {},
-      isLoading: false
-    };
-  }
-
-  componentDidMount() {
-    if (this.props.user.isAuthenticated) {
-      this.props.history.push('/');
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.user && nextProps.user.isAuthenticated) {
-      this.props.history.push('/');
-    }
-    if (nextProps.errors) {
-      this.setState({
-        errors: nextProps.errors,
-        isLoading: false
-      });
-    }
-  }
-
-  onSubmit = (e) => {
-    e.preventDefault();
-    if (this.isValid()) {
-      this.setState({ errors: {}, isLoading: true });
-      this.props.loginUser(this.state, this.props.history);
-    }
-  }
-
-  onChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
-  isValid = () => {
-    const { errors, isValid } = validateInput(this.state);
-    if (!isValid) {
-      this.setState({ errors });
-    }
-    return isValid;
-  }
-
+export default class Login extends Component {
   render() {
-    const { errors, email, password, isLoading } = this.state;
-
     return (
-      <div className='login-form'>
-        <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
-          <Grid.Column style={{ maxWidth: 450 }}>
-            <Link to='/'>
-              <Image src='../../dummy.png' size='tiny' centered />
-            </Link>
-
-            <Header as='h2' color='teal' textAlign='center'>
-              Login
-            </Header>
-            <Form size='large'
-              onSubmit={this.onSubmit}
-              error={errors.loginError ? true : false}
-              autoComplete='off'
-            >
-              <Segment stacked>
-                <Form.Input
-                  fluid icon='user'
-                  iconPosition='left'
-                  name='email'
-                  placeholder='E-mail'
-                  defaultValue={email}
-                  error={errors.email ? true : false}
-                  onChange={this.onChange}
-                />
-                <Form.Input
-                  fluid icon='lock'
-                  iconPosition='left'
-                  name='password'
-                  placeholder='Password'
-                  type='password'
-                  defaultValue={password}
-                  error={errors.password ? true : false}
-                  onChange={this.onChange}
-                />
-
-                <Message error content={errors.loginError} />
-
-                <Button color='teal' fluid size='large' disabled={isLoading}>
-                  {!isLoading
-                    ? 'Login'
-                    : <Loader active inverted inline size='small' />
-                  }
-                </Button>
-              </Segment>
-            </Form>
-            <Message>
-              Don't have an account? <Link to='/signup'>Sign up!</Link>
-            </Message>
-          </Grid.Column>
-        </Grid>
-      </div>
+      <form>
+        <h3>Log In</h3>
+        <div className="mb-3">
+          <label>Email address</label>
+          <input
+            type="email"
+            className="form-control"
+            placeholder="Enter email"
+          />
+        </div>
+        <div className="mb-3">
+          <label>Password</label>
+          <input
+            type="password"
+            className="form-control"
+            placeholder="Enter password"
+          />
+        </div>
+        <div className="mb-3">
+          <div className="custom-control custom-checkbox">
+            <input
+              type="checkbox"
+              className="custom-control-input"
+              id="customCheck1"
+            />
+            <label className="custom-control-label" htmlFor="customCheck1">
+              Remember me
+            </label>
+          </div>
+        </div>
+        <div className="d-grid">
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </div>
+      </form>
     )
   }
 }
-
-LoginForm.propTypes = {
-  errors: PropTypes.object.isRequired
-}
-
-const mapStateToProps = state => ({
-  user: state.user,
-  errors: state.errors
-})
-
-export default connect(mapStateToProps, { loginUser })(LoginForm)
