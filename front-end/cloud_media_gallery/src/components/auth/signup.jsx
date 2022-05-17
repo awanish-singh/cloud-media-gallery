@@ -17,7 +17,14 @@ const SignUp = () => {
     const username = usernameRef.current.value;
     const password = passwordRef.current.value;
 
-    dispatch(authActions.login({ sessionId: username, userName: username }));
+    dispatch(
+      authActions.login({
+        sessionId: username,
+        userName: username,
+        fullName: username,
+        email: `${username}@gmail.com`,
+      })
+    );
 
     navigate("/", { replace: true });
   };

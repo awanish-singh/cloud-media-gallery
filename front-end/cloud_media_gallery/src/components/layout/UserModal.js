@@ -1,10 +1,11 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../store/auth-slice";
 import ButtonDark from "../UI/ButtonDark";
 import classes from "./UserModal.module.css";
 
 const UserModal = (props) => {
   const dispatch = useDispatch();
+  const { userName, fullName, email } = useSelector((state) => state.auth);
   return (
     <div
       className={classes.userModal}
@@ -16,11 +17,13 @@ const UserModal = (props) => {
       <div>
         <div className={classes.info}>
           <div>
-            <div>FL</div>
-            <p>Hello, Username</p>
+            <div>{userName[0].toUpperCase()}</div>
+            <p className={classes.username}>{`Hello, ${userName}`}</p>
           </div>
-          <p>Full Name</p>
-          <p>email@address.com</p>
+          <div className={classes.nameemail}>
+            <p className={classes.fullname}>{fullName}</p>
+            <p className={classes.email}>{email}</p>
+          </div>
         </div>
         <div className={classes.actions}>
           <ButtonDark
