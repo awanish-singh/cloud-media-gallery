@@ -1,38 +1,24 @@
-import dummy from "../dummy.png";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import Home from "../components/Home";
 
 const HomePage = () => {
-  console.log("home");
+  const { isLoggedIn } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  useEffect(() => {
+    console.log(isLoggedIn);
+    if (!isLoggedIn) {
+      navigate("/login", { replace: true });
+    }
+  });
   return (
-    <div>
-      <div className="container">
-        <h1>Home Page</h1>
-        <p>Day, Date Month</p>
-        <div className="row">
-          <div className="col-sm-4">
-            <img
-              src={require("../logo.svg").default}
-              className="rounded img-fluid"
-              alt="pic1"
-            />
-          </div>
-          <div className="col-sm-4">
-            <img
-              src={dummy}
-              className="rounded img-fluid mx-auto d-block"
-              alt="pic2"
-            />
-          </div>
-          <div className="col-sm-4">
-            <img
-              src={require("../logo.svg").default}
-              className="rounded img-fluid"
-              alt="pic3"
-            />
-          </div>
-        </div>
-        <p className="float-left">Day, Date Month</p>
+    <>
+      <div>
+        <h2>Home</h2>
       </div>
-    </div>
+      <Home />
+    </>
   );
 };
 

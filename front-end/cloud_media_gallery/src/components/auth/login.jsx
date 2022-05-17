@@ -1,23 +1,49 @@
-import React, { Component } from 'react'
-export default class Login extends Component {
-  render() {
-    return (
-      <form>
+import React, { Component, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { authActions } from "../../store/auth-slice";
+
+import ButtonDark from "../UI/ButtonDark";
+
+const Login = () => {
+  const usernameRef = useRef();
+  const passwordRef = useRef();
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  const loginHandler = (e) => {
+    e.preventDefault();
+
+    const username = usernameRef.current.value;
+    const password = passwordRef.current.value;
+
+    dispatch(authActions.login({ sessionId: username, userName: username }));
+
+    navigate("/", { replace: true });
+  };
+  return (
+    <section style={{ display: "flex", justifyContent: "center" }}>
+      <form className="w-25" onSubmit={loginHandler}>
         <h3>Log In</h3>
         <div className="mb-3">
-          <label>Email address</label>
+          <label>Username</label>
           <input
-            type="email"
+            ref={usernameRef}
+            type="text"
             className="form-control"
-            placeholder="Enter email"
+            placeholder="Enter username"
+            required
           />
         </div>
         <div className="mb-3">
           <label>Password</label>
           <input
+            ref={passwordRef}
             type="password"
             className="form-control"
             placeholder="Enter password"
+            required
           />
         </div>
         <div className="mb-3">
@@ -32,12 +58,18 @@ export default class Login extends Component {
             </label>
           </div>
         </div>
-        <div className="d-grid">
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
+        <div className="d-flex justify-content-between">
+          <ButtonDark type="submit">Submit</ButtonDark>
+          <ButtonDark
+            onClick={() => {
+              navigate("/signup");
+            }}
+          >
+            Sign Up
+          </ButtonDark>
         </div>
       </form>
-    )
-  }
-}
+    </section>
+  );
+};
+export default Login;

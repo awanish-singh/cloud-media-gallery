@@ -2,20 +2,18 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
-const MediaDetailPage = () => {
+import SignUp from "../components/auth/signup";
+
+const SignUpPage = () => {
   const { isLoggedIn } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   useEffect(() => {
     console.log(isLoggedIn);
-    if (!isLoggedIn) {
-      navigate("/login", { replace: true });
+    if (isLoggedIn) {
+      navigate("/", { replace: true });
     }
   });
-  return (
-    <div>
-      <h2>Media Detail</h2>
-    </div>
-  );
+  return <SignUp />;
 };
 
-export default MediaDetailPage;
+export default SignUpPage;
