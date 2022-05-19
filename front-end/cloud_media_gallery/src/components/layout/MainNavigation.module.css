@@ -1,5 +1,7 @@
 .nav {
   width: 18rem;
+  /* position: fixed; */
+  padding-top: 2rem;
 }
 
 .nav ul {

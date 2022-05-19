@@ -12,18 +12,29 @@
   opacity: 0;
   transform: translateX(-100%);
   animation: notification;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
+  animation-duration: 4.5s;
+  animation-fill-mode: both;
+  color: var(--primaryColor);
 }
 
 @keyframes notification {
-  100% {
+  10% {
     opacity: 1;
     transform: translateX(0%);
   }
+
+  90% {
+    opacity: 1;
+    transform: translate(0%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-100%);
+  }
 }
 .title {
-  color: var(--primaryColor);
+  /* color: var(--primaryColor); */
   opacity: 1;
   border-bottom: 1px solid #ccc;
   padding-left: 4px;

@@ -49,7 +49,7 @@ const Login = () => {
         notificationActions.add({
           title: "Logged In",
           description: "You are logged in...",
-          type: "NORMAL",
+          type: "SUCCESS",
         })
       );
 

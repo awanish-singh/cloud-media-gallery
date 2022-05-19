@@ -22,3 +22,17 @@ body {
   height: 100%;
   font-family: "Open Sans", sans-serif;
 }
+
+::-webkit-scrollbar {
+  width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondaryColor);
+  /* width: 20px; */
+  border-radius: 40px;
+}

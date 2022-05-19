@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const notificationColor = {
+  NORMAL: "inherit",
+  ALERT: "red",
+  SUCCESS: "green",
+};
+
 const notificationSlice = createSlice({
   name: "notification",
   initialState: { notifications: [] },
@@ -9,6 +15,7 @@ const notificationSlice = createSlice({
         title: action.payload.title,
         description: action.payload.description,
         type: action.payload.type,
+        color: notificationColor[action.payload.type],
       };
 
       state.notifications.push(noti);

@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="app">
       {isLoading && <LoadingSpinner />}
-      <MainHeader pseudo={true} />
+      {/* <MainHeader pseudo={true} /> */}
       <MainHeader />
       <div className="main">
         {isLoggedIn && <MainNavigation />}

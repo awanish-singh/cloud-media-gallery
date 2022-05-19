@@ -4,7 +4,9 @@ const Notification = (props) => {
   return (
     <div className={classes.notification}>
       <div>
-        <h6 className={classes.title}>{props.title}</h6>
+        <h6 style={{ color: props.color }} className={classes.title}>
+          {props.title}
+        </h6>
         <p className={classes.description}>{props.description}</p>
       </div>
     </div>

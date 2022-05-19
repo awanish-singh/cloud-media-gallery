@@ -8,7 +8,11 @@ const NotificationList = (props) => {
       <div>
         {props.notifications.map((noti) => {
           return (
-            <Notification title={noti.title} description={noti.description} />
+            <Notification
+              title={noti.title}
+              description={noti.description}
+              color={noti.color}
+            />
           );
         })}
       </div>
