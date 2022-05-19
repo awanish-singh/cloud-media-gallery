@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import Home from "../components/Home";
+import Home from "../components/Home/Home";
 
 const HomePage = () => {
   const { isLoggedIn } = useSelector((state) => state.auth);

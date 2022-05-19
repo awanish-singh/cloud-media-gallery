@@ -3,8 +3,10 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
 import Album from "./Album";
+import items from "../components/Albums/data";
+import AlbumList from "../components/Albums/AlbumList";
 
-const AlbumsPage = ({ items }) => {
+const AlbumsPage = () => {
   const { isLoggedIn } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const [albumData] = useState(items);
@@ -15,14 +17,13 @@ const AlbumsPage = ({ items }) => {
     }
   });
   return (
-
-    <div>
-      <div className="title">
-        <h2>Album</h2>
+    <>
+      <div>
+        <h2>Albums</h2>
       </div>
 
-      <div class="main-list"><Album items={albumData} /></div>
-    </div>
+      <AlbumList />
+    </>
   );
 };
 
