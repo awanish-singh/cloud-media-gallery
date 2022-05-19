@@ -10,13 +10,13 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.cognizant</groupId>
-	<artifactId>login-mvc</artifactId>
+	<artifactId>registration</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>login-mvc</name>
-	<description>A microservice for login</description>
+	<name>registration</name>
+	<description>a mircoservices for register a user into database. </description>
 	<properties>
 		<java.version>1.8</java.version>
-		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+		<maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -49,6 +49,24 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- Custom Dependencies for 406 Error -->
+		
+
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+
+
+
+
 	</dependencies>
 
 	<build>
@@ -65,7 +83,6 @@
 					</excludes>
 				</configuration>
 			</plugin>
-
 		</plugins>
 	</build>
 
