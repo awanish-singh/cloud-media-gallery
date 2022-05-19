@@ -61,7 +61,7 @@ const DUMMY_DATA = [
 
 const Home = () => {
   const mediaList = DUMMY_DATA.map((group) => {
-    return <MediaGroup {...group} />;
+    return <MediaGroup key={group.id} {...group} />;
   });
 
   return (

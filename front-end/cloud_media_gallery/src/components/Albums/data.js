@@ -61,7 +61,7 @@ const items = [
     count: 2,
   },
   {
-    id: 7,
+    id: 8,
     title: "Album 8",
     category: "mobile",
     img: "https://images.unsplash.com/photo-1533228100845-08145b01de14?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=438&q=80",
@@ -69,7 +69,7 @@ const items = [
     count: 19,
   },
   {
-    id: 8,
+    id: 9,
     title: "Album 9",
     category: "mobile",
 
@@ -78,7 +78,7 @@ const items = [
     count: 20,
   },
   {
-    id: 9,
+    id: 10,
     title: "Album 10",
     category: "city",
 
@@ -88,7 +88,7 @@ const items = [
   },
 
   {
-    id: 10,
+    id: 11,
     title: "Album 11",
     category: "Cb",
 

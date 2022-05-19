@@ -6,11 +6,11 @@ import classes from "./AlbumList.module.css";
 const AlbumList = (props) => {
   return (
     <>
-      <div class="main-list">
+      <div>
         <ul className={classes.albumList}>
           {items.map((albumData) => {
             return (
-              <li className={classes.album}>
+              <li key={albumData.id} className={classes.album}>
                 <Album {...albumData} />
               </li>
             );

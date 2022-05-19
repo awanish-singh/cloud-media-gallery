@@ -9,6 +9,7 @@ const NotificationList = (props) => {
         {props.notifications.map((noti) => {
           return (
             <Notification
+              key={noti.title}
               title={noti.title}
               description={noti.description}
               color={noti.color}
