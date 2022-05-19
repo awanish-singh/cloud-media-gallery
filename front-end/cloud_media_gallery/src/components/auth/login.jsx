@@ -2,6 +2,9 @@ import React, { Component, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { authActions } from "../../store/auth-slice";
+import { httpStateActions } from "../../store/httpState-slice";
+import { removeNotification } from "../../store/notification-actions";
+import { notificationActions } from "../../store/notification-slice";
 
 import ButtonDark from "../UI/ButtonDark";
 
@@ -18,21 +21,47 @@ const Login = () => {
     const username = usernameRef.current.value;
     const password = passwordRef.current.value;
 
+    dispatch(httpStateActions.send());
+
     dispatch(
-      authActions.login({
-        sessionId: username,
-        userName: username,
-        fullName: username,
-        email: `${username}@gmail.com`,
+      notificationActions.add({
+        title: "Logging",
+        description: "Logging you in...",
+        type: "NORMAL",
       })
     );
 
-    navigate("/", { replace: true });
+    dispatch(removeNotification());
+
+    setTimeout(() => {
+      dispatch(
+        authActions.login({
+          sessionId: username,
+          userName: username,
+          fullName: username,
+          email: `${username}@gmail.com`,
+        })
+      );
+
+      dispatch(httpStateActions.response());
+
+      dispatch(
+        notificationActions.add({
+          title: "Logged In",
+          description: "You are logged in...",
+          type: "NORMAL",
+        })
+      );
+
+      dispatch(removeNotification());
+
+      navigate("/", { replace: true });
+    }, 2000);
   };
   return (
     <section style={{ display: "flex", justifyContent: "center" }}>
       <form className="w-25" onSubmit={loginHandler}>
-        <h3>Log In</h3>
+        <h3 className="mb-4">Log In</h3>
         <div className="mb-3">
           <label>Username</label>
           <input
@@ -66,10 +95,10 @@ const Login = () => {
           </div>
         </div>
         <div className="d-flex justify-content-between">
-          <ButtonDark type="submit">Submit</ButtonDark>
+          <ButtonDark type="submit">Log In</ButtonDark>
           <ButtonDark
             onClick={() => {
-              navigate("/signup");
+              navigate("/signup", { replace: true });
             }}
           >
             Sign Up

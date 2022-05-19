@@ -5,9 +5,12 @@ import { useSelector } from "react-redux";
 import classes from "./MainHeader.module.css";
 import { useRef, useState } from "react";
 import UserModal from "./UserModal";
+import ButtonDark from "../UI/ButtonDark";
 
 const MainHeader = (props) => {
   const headerRef = useRef();
+  const fileInputRef = useRef();
+  const formRef = useRef();
   const [userModal, setUserModalOpen] = useState({
     isOpen: false,
     headerBottomPos: 0,
@@ -29,6 +32,17 @@ const MainHeader = (props) => {
     setUserModalOpen({ ...userModal, isOpen: false });
   };
 
+  const fileUploadHandler = (e) => {
+    // const file = fileInputRef.current.value;
+    const files = Array.from(new FormData(formRef.current).entries());
+    console.log(files);
+  };
+
+  const triggerUpload = (e) => {
+    const fileElement = fileInputRef.current;
+    fileElement.click();
+  };
+
   return (
     <header
       ref={headerRef}
@@ -42,14 +56,29 @@ const MainHeader = (props) => {
       {isLoggedIn && (
         <div className={classes.actions}>
           <div className={classes.upload}>
-            <p>
-              <IconContext.Provider value={{ size: "24px" }}>
-                <span>
-                  <MdOutlineFileUpload />
-                </span>
-              </IconContext.Provider>
-              Upload
-            </p>
+            <ButtonDark onClick={triggerUpload}>
+              <form ref={formRef} style={{ display: "none" }}>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  name="media"
+                  multiple
+                  accept="image/*, video/*"
+                  style={{
+                    display: "none",
+                  }}
+                  onChange={fileUploadHandler}
+                />
+              </form>
+              <p>
+                <IconContext.Provider value={{ size: "24px" }}>
+                  <span>
+                    <MdOutlineFileUpload />
+                  </span>
+                </IconContext.Provider>
+                Upload
+              </p>
+            </ButtonDark>
           </div>
           <div
             className={classes.user}

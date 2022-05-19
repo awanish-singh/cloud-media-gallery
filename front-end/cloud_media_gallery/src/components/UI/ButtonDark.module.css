@@ -6,6 +6,7 @@
   border: none;
   height: min-content;
   min-width: max-content;
+  /* z-index: 1; */
 }
 
 .btnDark:hover {

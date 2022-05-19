@@ -7,6 +7,10 @@ import ButtonDark from "../UI/ButtonDark";
 const SignUp = () => {
   const usernameRef = useRef();
   const passwordRef = useRef();
+  const firstnameRef = useRef();
+  const lastnameRef = useRef();
+  const emailRef = useRef();
+
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -16,13 +20,21 @@ const SignUp = () => {
 
     const username = usernameRef.current.value;
     const password = passwordRef.current.value;
+    const firstname = firstnameRef.current.value;
+    const lastname = lastnameRef.current.value;
+    const email = emailRef.current.value;
 
     dispatch(
       authActions.login({
         sessionId: username,
         userName: username,
-        fullName: username,
-        email: `${username}@gmail.com`,
+        fullName:
+          firstname[0].toUpperCase() +
+          firstname.slice(1) +
+          " " +
+          lastname[0].toUpperCase() +
+          lastname.slice(1),
+        email: email,
       })
     );
 
@@ -31,10 +43,11 @@ const SignUp = () => {
   return (
     <section style={{ display: "flex", justifyContent: "center" }}>
       <form className="w-25" onSubmit={SignUpHandler}>
-        <h3>Sign Up</h3>
+        <h3 className="mb-4">Sign Up</h3>
         <div className="mb-3">
           <label>First name</label>
           <input
+            ref={firstnameRef}
             type="text"
             className="form-control"
             placeholder="First name"
@@ -44,6 +57,7 @@ const SignUp = () => {
         <div className="mb-3">
           <label>Last name</label>
           <input
+            ref={lastnameRef}
             type="text"
             className="form-control"
             placeholder="Last name"
@@ -63,6 +77,7 @@ const SignUp = () => {
         <div className="mb-3">
           <label>Email address</label>
           <input
+            ref={emailRef}
             type="email"
             className="form-control"
             placeholder="Enter email"
@@ -79,12 +94,16 @@ const SignUp = () => {
             required
           />
         </div>
-        <div className="d-grid">
+        <div className="d-flex justify-content-between">
           <ButtonDark type="submit">Sign Up</ButtonDark>
+          <ButtonDark
+            onClick={() => {
+              navigate("/login", { replace: true });
+            }}
+          >
+            Log In
+          </ButtonDark>
         </div>
-        <p className="forgot-password text-right">
-          Already registered <NavLink to="/login">sign in?</NavLink>
-        </p>
       </form>
     </section>
   );

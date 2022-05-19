@@ -64,19 +64,17 @@
   font-weight: 500;
 }
 .upload {
-  cursor: pointer;
-  padding: 8px 16px 8px 16px;
   border-radius: 10px;
+  position: relative;
 }
-.upload:hover {
-  background-color: var(--secondaryColor);
-}
-.upload > p {
+
+.upload > button > p {
   color: var(--primaryBackgroundColor);
   font-weight: bold;
   margin: 0;
+  z-index: 10;
 }
 
-.upload > p > span {
+.upload > button > p > span {
   margin-right: 4px;
 }

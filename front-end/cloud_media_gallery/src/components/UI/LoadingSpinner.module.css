@@ -1,0 +1,62 @@
+.back {
+  width: 70px;
+  height: 50px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  top: 45%;
+  left: 0;
+  right: 0;
+  /* top: 0; */
+  bottom: 0;
+  z-index: 999;
+  /* border: 2px solid var(--primaryBackgroundColor); */
+  border-radius: 50px;
+  background-color: transparent;
+  box-shadow: inset 0px 0px 50px 10px var(--primaryBackgroundColor),
+    0px 0px 50px 30px var(--primaryBackgroundColor);
+}
+
+.one,
+.two,
+.three {
+  width: 75%;
+  height: 15%;
+  border-radius: 20px;
+  background-color: var(--secondaryColor);
+  animation: spinner;
+  animation-duration: 0.4s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  /* animation-fill-mode: forwards; */
+  animation-direction: alternate;
+  animation-fill-mode: both;
+}
+
+.one {
+  /* transform: translateX(25%); */
+  /* animation-direction: reverse; */
+  /* animation-delay: 0.3s; */
+}
+
+.two {
+  animation-delay: 0.1s;
+}
+
+.three {
+  /* transform: translateX(-25%); */
+  animation-delay: 0.2s;
+}
+
+@keyframes spinner {
+  0% {
+    transform: translateX(25%);
+  }
+
+  100% {
+    transform: translateX(-25%);
+  }
+}

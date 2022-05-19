@@ -8,7 +8,6 @@ const LoginPage = () => {
   const { isLoggedIn } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   useEffect(() => {
-    console.log(isLoggedIn);
     if (isLoggedIn) {
       navigate("/", { replace: true });
     }

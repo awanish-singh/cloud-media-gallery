@@ -9,15 +9,24 @@ import "./App.css";
 
 import * as Pages from "./pages";
 import MainHeader from "./components/layout/MainHeader";
+import LoadingSpinner from "./components/UI/LoadingSpinner";
+import Notification from "./components/UI/Notification";
+import NotificationList from "./components/UI/NotificationList";
 
 function App() {
   const { isLoggedIn } = useSelector((state) => state.auth);
+  const { isLoading } = useSelector((state) => state.httpState);
+  const { notifications } = useSelector((state) => state.notification);
   return (
     <div className="app">
+      {isLoading && <LoadingSpinner />}
       <MainHeader pseudo={true} />
       <MainHeader />
       <div className="main">
         {isLoggedIn && <MainNavigation />}
+        {notifications.length > 0 && (
+          <NotificationList notifications={notifications} />
+        )}
         <div className="content">
           <Routes>
             <Route path="/" element={<Pages.HomePage />} />
