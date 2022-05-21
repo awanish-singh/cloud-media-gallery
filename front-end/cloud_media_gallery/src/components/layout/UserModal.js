@@ -1,5 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
+import { albumsActions } from "../../store/albums-slice";
 import { authActions } from "../../store/auth-slice";
+import { homeActions } from "../../store/home-slice";
+import { peopleActions } from "../../store/people-slice";
 import ButtonDark from "../UI/ButtonDark";
 import classes from "./UserModal.module.css";
 
@@ -28,6 +31,9 @@ const UserModal = (props) => {
         <div className={classes.actions}>
           <ButtonDark
             onClick={() => {
+              dispatch(homeActions.empty());
+              dispatch(albumsActions.empty());
+              dispatch(peopleActions.empty());
               dispatch(authActions.logout());
             }}
           >

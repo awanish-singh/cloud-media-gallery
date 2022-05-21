@@ -11,7 +11,7 @@ const peopleSlice = createSlice({
     },
 
     empty(state) {
-      state.people.splice(0, state.length);
+      state.people.splice(0, state.people.length);
     },
   },
 });

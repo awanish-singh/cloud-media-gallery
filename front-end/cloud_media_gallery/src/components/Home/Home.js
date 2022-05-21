@@ -63,25 +63,10 @@ const DUMMY_DATA = [
 ];
 
 const Home = (props) => {
-  const mediaList = props.data
-    ? props.data.map((group) => {
-        return (
-          <MediaGroup
-            key={group.title}
-            date={group.date}
-            media={[
-              {
-                id: group.title,
-                mediaId: group.date,
-                url: group.url,
-                alt: group.title,
-                type: group.media_type,
-              },
-            ]}
-          />
-        );
-      })
-    : "";
+  const { allMedia } = useSelector((state) => state.home);
+  const mediaList = allMedia.map((group) => {
+    return <MediaGroup key={group.id} {...group} />;
+  });
 
   return (
     <div>

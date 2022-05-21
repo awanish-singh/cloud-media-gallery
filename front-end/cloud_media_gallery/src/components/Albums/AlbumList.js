@@ -4,9 +4,11 @@ import Album from "./Album";
 import classes from "./AlbumList.module.css";
 import { useNavigate } from "react-router-dom";
 import React from "react";
+import { useSelector } from "react-redux";
 
 const AlbumList = React.memo((props) => {
   const navigate = useNavigate();
+  const { albums } = useSelector((state) => state.albums);
 
   const albumClickHandler = (albumId) => {
     const link = `/album/${albumId}`;
@@ -16,7 +18,7 @@ const AlbumList = React.memo((props) => {
     <>
       <div>
         <ul className={classes.albumList}>
-          {props.albums.map((albumData) => {
+          {albums.map((albumData) => {
             return (
               <li
                 onClick={albumClickHandler.bind(this, albumData.date)}

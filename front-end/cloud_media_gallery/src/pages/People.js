@@ -13,7 +13,6 @@ const PeoplePage = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
-    // console.log(isLoggedIn);
     if (!isLoggedIn) {
       navigate("/login", { replace: true });
     }
@@ -23,24 +22,24 @@ const PeoplePage = (props) => {
     if (isLoggedIn && people.length === 0) {
       sendRequest("https://randomuser.me/api/?results=8", "GET");
     }
-    console.log(people);
     return cleanUp;
   }, [isLoggedIn, sendRequest, cleanUp, people]);
 
-  // if (data) {
-  //   dispatch(peopleActions.fill({ people: data.results }));
-  // }
+  useEffect(() => {
+    if (data) {
+      dispatch(peopleActions.fill({ people: data.results }));
+    }
+  }, [data, dispatch]);
 
-  console.log(data);
   return (
     <>
       <div>
         <h2>People</h2>
       </div>
       <SearchBar />
-      {data && <PeopleList people={data.results} />}
+      <PeopleList />
     </>
   );
 };
 
-export default React.memo(PeoplePage);
+export default PeoplePage;

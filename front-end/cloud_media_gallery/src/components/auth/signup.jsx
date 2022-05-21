@@ -26,7 +26,7 @@ const SignUp = () => {
 
     dispatch(
       authActions.login({
-        sessionId: username,
+        token: username,
         userName: username,
         fullName:
           firstname[0].toUpperCase() +

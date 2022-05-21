@@ -2,6 +2,7 @@ import PeopleItem from "./PeopleItem";
 
 import classes from "./PeopleList.module.css";
 import dummy from "../../dummy.png";
+import { useSelector } from "react-redux";
 
 const DUMMY_DATA = [
   {
@@ -63,7 +64,8 @@ const DUMMY_DATA = [
 ];
 
 const PeopleList = (props) => {
-  const people = props.people.map((val) => {
+  const { people } = useSelector((state) => state.people);
+  const peopleComp = people.map((val) => {
     return (
       <li key={val.id.value} className={classes.item}>
         <PeopleItem
@@ -75,7 +77,7 @@ const PeopleList = (props) => {
   });
   return (
     <div>
-      <ul className={classes.list}>{people}</ul>
+      <ul className={classes.list}>{peopleComp}</ul>
     </div>
   );
 };

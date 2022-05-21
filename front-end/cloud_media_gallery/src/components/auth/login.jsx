@@ -36,7 +36,7 @@ const Login = () => {
     setTimeout(() => {
       dispatch(
         authActions.login({
-          sessionId: username,
+          token: username,
           userName: username,
           fullName: username,
           email: `${username}@gmail.com`,
