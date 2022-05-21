@@ -2,7 +2,7 @@ import MediaCard from "../UI/MediaCard";
 
 const Album = ({ id, img, title, count }) => {
   return (
-    <div className="album-data" key={id}>
+    <div className="album-data">
       <MediaCard url={img} alt={title} type="image" shape="rectangle" />
       <div className="album-info">
         <h5 className="mt-2">{title}</h5>

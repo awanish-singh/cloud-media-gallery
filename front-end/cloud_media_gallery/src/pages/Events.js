@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import SearchBar from "../components/UI/SearchBar";
 
 const EventsPage = () => {
   const { isLoggedIn } = useSelector((state) => state.auth);
@@ -12,9 +13,12 @@ const EventsPage = () => {
     }
   });
   return (
-    <div>
-      <h2>Events</h2>
-    </div>
+    <>
+      <div>
+        <h2>Events</h2>
+      </div>
+      <SearchBar />
+    </>
   );
 };
 

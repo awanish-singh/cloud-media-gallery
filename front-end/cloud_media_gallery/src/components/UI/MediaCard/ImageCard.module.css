@@ -13,6 +13,7 @@
 
 .img > div {
   transition: 0.3s;
+  background-color: var(--primaryColor);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;

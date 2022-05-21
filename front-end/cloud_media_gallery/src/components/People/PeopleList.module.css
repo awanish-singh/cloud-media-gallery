@@ -3,14 +3,14 @@
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-around;
   width: 100%;
   list-style: none;
   padding: 0;
 }
 
 .item {
-  width: 20%;
-  margin-left: 2rem;
+  width: 21%;
+  /* margin-left: 2rem; */
   margin-bottom: 2rem;
 }

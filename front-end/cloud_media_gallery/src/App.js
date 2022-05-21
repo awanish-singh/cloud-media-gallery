@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import React from "react";
+import React, { useMemo } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -17,6 +17,14 @@ function App() {
   const { isLoggedIn } = useSelector((state) => state.auth);
   const { isLoading } = useSelector((state) => state.httpState);
   const { notifications } = useSelector((state) => state.notification);
+
+  // console.log(notifications);
+
+  const notificationComp = useMemo(
+    () => <NotificationList notifications={notifications} />,
+    [notifications]
+  );
+
   return (
     <div className="app">
       {isLoading && <LoadingSpinner />}
@@ -24,9 +32,7 @@ function App() {
       <MainHeader />
       <div className="main">
         {isLoggedIn && <MainNavigation />}
-        {notifications.length > 0 && (
-          <NotificationList notifications={notifications} />
-        )}
+        {notifications.length > 0 && notificationComp}
         <div className="content">
           <Routes>
             <Route path="/" element={<Pages.HomePage />} />

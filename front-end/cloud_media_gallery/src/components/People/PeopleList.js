@@ -62,11 +62,14 @@ const DUMMY_DATA = [
   },
 ];
 
-const PeopleList = () => {
-  const people = DUMMY_DATA.map((val) => {
+const PeopleList = (props) => {
+  const people = props.people.map((val) => {
     return (
-      <li key={val.id} className={classes.item}>
-        <PeopleItem {...val} />
+      <li key={val.id.value} className={classes.item}>
+        <PeopleItem
+          name={val.name.first + " " + val.name.last}
+          url={val.picture.large}
+        />
       </li>
     );
   });

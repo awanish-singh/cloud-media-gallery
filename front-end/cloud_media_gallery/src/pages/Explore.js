@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
+import SearchBar from "../components/UI/SearchBar";
 
-const ExplorePage = () => {
+const ExplorePage = React.memo(() => {
   const { isLoggedIn } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   useEffect(() => {
@@ -12,10 +13,13 @@ const ExplorePage = () => {
     }
   });
   return (
-    <div>
-      <h2>Explore</h2>
-    </div>
+    <>
+      <div>
+        <h2>Explore</h2>
+      </div>
+      <SearchBar />
+    </>
   );
-};
+});
 
 export default ExplorePage;

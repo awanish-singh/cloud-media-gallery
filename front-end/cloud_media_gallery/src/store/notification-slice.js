@@ -12,6 +12,7 @@ const notificationSlice = createSlice({
   reducers: {
     add(state, action) {
       const noti = {
+        id: Math.random(),
         title: action.payload.title,
         description: action.payload.description,
         type: action.payload.type,

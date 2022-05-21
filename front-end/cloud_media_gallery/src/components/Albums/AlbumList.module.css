@@ -1,16 +1,17 @@
 .albumList {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  flex-wrap: wrap;
+  justify-content: space-around;
+  /* max-width: max-content; */
+  /* width: 100%; */
+  /* width: max-content; */
   list-style: none;
   padding: 0;
+  flex-flow: wrap;
 }
 
 .album {
   width: 30%;
-  margin-right: 2rem;
+  /* margin-right: 2rem; */
   margin-bottom: 2rem;
 }

@@ -1,4 +1,7 @@
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import dummy from "../../dummy.png";
+import useHttp from "../../hooks/http-hook";
 // import MediaCard from "../../UI/MediaCard";
 import MediaGroup from "./MediaGroup";
 
@@ -59,10 +62,26 @@ const DUMMY_DATA = [
   },
 ];
 
-const Home = () => {
-  const mediaList = DUMMY_DATA.map((group) => {
-    return <MediaGroup key={group.id} {...group} />;
-  });
+const Home = (props) => {
+  const mediaList = props.data
+    ? props.data.map((group) => {
+        return (
+          <MediaGroup
+            key={group.title}
+            date={group.date}
+            media={[
+              {
+                id: group.title,
+                mediaId: group.date,
+                url: group.url,
+                alt: group.title,
+                type: group.media_type,
+              },
+            ]}
+          />
+        );
+      })
+    : "";
 
   return (
     <div>

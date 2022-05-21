@@ -17,6 +17,11 @@ const httpStateSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload.error;
     },
+
+    clean(state) {
+      state.isLoading = false;
+      state.error = null;
+    },
   },
 });
 
