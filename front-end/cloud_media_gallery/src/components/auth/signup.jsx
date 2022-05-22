@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { authActions } from "../../store/auth-slice";
 import ButtonDark from "../UI/ButtonDark";
+import axios from "axios";
 
 const SignUp = () => {
   const usernameRef = useRef();
@@ -24,21 +25,37 @@ const SignUp = () => {
     const lastname = lastnameRef.current.value;
     const email = emailRef.current.value;
 
-    dispatch(
-      authActions.login({
-        token: username,
+    axios({
+      url: "http://localhost:8082/users-microservice/users/",
+      method: "POST",
+      data: {
+        firstName: firstname,
+        lastName: lastname,
         userName: username,
-        fullName:
-          firstname[0].toUpperCase() +
-          firstname.slice(1) +
-          " " +
-          lastname[0].toUpperCase() +
-          lastname.slice(1),
-        email: email,
+        emailId: email,
+        password: password,
+      },
+    })
+      .then((res) => {
+        console.log(res);
+        dispatch(
+          authActions.login({
+            token: username,
+            userName: res.data.userName,
+            fullName:
+              res.data.firstName[0].toUpperCase() +
+              res.data.firstName.slice(1) +
+              " " +
+              res.data.lastName[0].toUpperCase() +
+              res.data.lastName.slice(1),
+            email: res.data.emailId,
+          })
+        );
+        navigate("/", { replace: true });
       })
-    );
-
-    navigate("/", { replace: true });
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <section style={{ display: "flex", justifyContent: "center" }}>

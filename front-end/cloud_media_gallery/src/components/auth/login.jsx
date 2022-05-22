@@ -5,6 +5,8 @@ import { authActions } from "../../store/auth-slice";
 import { httpStateActions } from "../../store/httpState-slice";
 import { removeNotification } from "../../store/notification-actions";
 import { notificationActions } from "../../store/notification-slice";
+import axios from "axios";
+
 
 import ButtonDark from "../UI/ButtonDark";
 
@@ -20,6 +22,21 @@ const Login = () => {
 
     const username = usernameRef.current.value;
     const password = passwordRef.current.value;
+
+    axios({
+      url: "http://localhost:8082/users-microservice/users/",
+      method: "POST",
+      data: {
+        username: username,
+        password: password
+      },
+    })
+    .then((res)=>{
+      console.log(res);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
 
     dispatch(httpStateActions.send());
 
