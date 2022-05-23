@@ -5,8 +5,7 @@ import classes from "./SearchBar.module.css";
 import ButtonDark from "./ButtonDark";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
-import { notificationActions } from "../../store/notification-slice";
-import { removeNotification } from "../../store/notification-actions";
+import { showNotifications } from "../../store/notification-actions";
 
 const SearchBar = (props) => {
   const inputRef = useRef();
@@ -16,14 +15,12 @@ const SearchBar = (props) => {
     const inputValue = inputRef.current.value;
     if (inputValue.length === 0) {
       dispatch(
-        notificationActions.add({
+        showNotifications({
           title: "OOPS",
           description: "You forgot to type...",
           type: "NORMAL",
         })
       );
-
-      dispatch(removeNotification());
     } else {
       console.log(inputValue);
     }

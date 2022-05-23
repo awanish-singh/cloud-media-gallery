@@ -5,6 +5,7 @@ const httpStateSlice = createSlice({
   initialState: { isLoading: false, error: null },
   reducers: {
     send(state) {
+      // console.log("in it");
       state.isLoading = true;
       state.error = null;
     },
@@ -15,7 +16,8 @@ const httpStateSlice = createSlice({
 
     error(state, action) {
       state.isLoading = false;
-      state.error = action.payload.error;
+      state.error = action.payload;
+      // console.log(action.payload);
     },
 
     clean(state) {

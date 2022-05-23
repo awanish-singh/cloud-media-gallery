@@ -8,10 +8,12 @@
   list-style: none;
   padding: 0;
   flex-flow: wrap;
+  flex-wrap: wrap;
 }
 
 .album {
   width: 30%;
+  /* flex: 1 1 400px; */
   /* margin-right: 2rem; */
   margin-bottom: 2rem;
 }

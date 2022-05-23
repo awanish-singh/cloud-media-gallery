@@ -18,7 +18,7 @@ function App() {
   const { isLoading } = useSelector((state) => state.httpState);
   const { notifications } = useSelector((state) => state.notification);
 
-  // console.log(notifications);
+  // console.log(isLoading);
 
   const notificationComp = useMemo(
     () => <NotificationList notifications={notifications} />,

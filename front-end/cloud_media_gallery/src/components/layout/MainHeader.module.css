@@ -35,6 +35,8 @@
   margin-left: 2rem;
   cursor: pointer;
   border-radius: 50%;
+  /* position: relative;
+  z-index: 2; */
 }
 
 .user:hover {

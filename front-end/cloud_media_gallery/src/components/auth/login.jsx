@@ -1,21 +1,24 @@
-import React, { Component, useRef } from "react";
+import React, { Component, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { authActions } from "../../store/auth-slice";
 import { httpStateActions } from "../../store/httpState-slice";
-import { removeNotification } from "../../store/notification-actions";
-import { notificationActions } from "../../store/notification-slice";
 import axios from "axios";
 
-
 import ButtonDark from "../UI/ButtonDark";
+import useHttp from "../../hooks/http-hook";
 
 const Login = () => {
   const usernameRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
+  const { data, sendRequest, cleanUp } = useHttp();
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    return cleanUp;
+  }, [cleanUp]);
 
   const loginHandler = (e) => {
     e.preventDefault();
@@ -23,57 +26,29 @@ const Login = () => {
     const username = usernameRef.current.value;
     const password = passwordRef.current.value;
 
-    axios({
-      url: "http://localhost:8082/users-microservice/users/",
-      method: "POST",
-      data: {
-        username: username,
-        password: password
-      },
-    })
-    .then((res)=>{
-      console.log(res);
-    })
-    .catch((err)=>{
-      console.log(err);
-    })
+    const requestBody = {
+      username,
+      password,
+    };
 
-    dispatch(httpStateActions.send());
-
-    dispatch(
-      notificationActions.add({
-        title: "Logging",
-        description: "Logging you in...",
-        type: "NORMAL",
-      })
+    sendRequest(
+      "http://localhost:8082/users-microservice/users/",
+      "POST",
+      requestBody
     );
 
-    dispatch(removeNotification());
-
-    setTimeout(() => {
+    if (data) {
       dispatch(
         authActions.login({
-          token: username,
-          userName: username,
-          fullName: username,
-          email: `${username}@gmail.com`,
+          token: data.token,
+          userName: data.userName,
+          fullName: data.fullName,
+          email: data.email,
         })
       );
-
-      dispatch(httpStateActions.response());
-
-      dispatch(
-        notificationActions.add({
-          title: "Logged In",
-          description: "You are logged in...",
-          type: "SUCCESS",
-        })
-      );
-
-      dispatch(removeNotification());
 
       navigate("/", { replace: true });
-    }, 2000);
+    }
   };
   return (
     <section style={{ display: "flex", justifyContent: "center" }}>
