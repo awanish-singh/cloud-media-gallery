@@ -1,9 +1,18 @@
 import MediaCard from "../UI/MediaCard";
+import { useNavigate } from "react-router-dom";
 
 const MediaGroup = (props) => {
+  const navigate = useNavigate();
+  const mediaClickHandler = (mediaId) => {
+    navigate("media/" + mediaId);
+  };
   const media = props.media.map((val) => {
     return (
-      <div key={val.id} className="col-sm-4">
+      <div
+        key={val.id}
+        className="col-sm-4"
+        onClick={mediaClickHandler.bind(this, val.mediaId)}
+      >
         <MediaCard
           id={val.id}
           url={val.url}

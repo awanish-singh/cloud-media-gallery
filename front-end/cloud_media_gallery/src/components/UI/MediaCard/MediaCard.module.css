@@ -1,0 +1,46 @@
+.media {
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  /* border: 1px solid #eee; */
+  box-shadow: 0px 0px 20px 0px #eee;
+  padding: 1rem;
+}
+
+.media:hover {
+}
+
+.media > div {
+  transition: 0.3s;
+  background-color: var(--primaryColor);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.media > div:hover {
+  filter: drop-shadow(0px 0px 10px #ccc);
+  transform: scale(1.05);
+}
+
+.rectangle > div {
+  width: 100%;
+  padding-top: 60%;
+  border-radius: 10px;
+}
+
+.square > div {
+  width: 100%;
+  padding-top: 100%;
+  border-radius: 10px;
+}
+
+.circle {
+  border-radius: 50%;
+}
+.circle > div {
+  width: 100%;
+  padding-top: 100%;
+  border-radius: 50%;
+}

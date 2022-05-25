@@ -11,7 +11,7 @@ const AlbumList = React.memo((props) => {
   const { albums } = useSelector((state) => state.albums);
 
   const albumClickHandler = (albumId) => {
-    const link = `/album/${albumId}`;
+    const link = `/albums/${albumId}`;
     navigate(link);
   };
   return (
@@ -30,6 +30,7 @@ const AlbumList = React.memo((props) => {
                   img={albumData.url}
                   count={Math.round(Math.random() * 30) + 1}
                   title={albumData.title}
+                  type={albumData.media_type}
                 />
               </li>
             );

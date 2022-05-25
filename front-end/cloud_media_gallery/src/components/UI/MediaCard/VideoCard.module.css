@@ -1,0 +1,13 @@
+.video {
+  position: relative;
+  margin: 0 auto;
+  padding-top: 0 !important;
+}
+
+.videoIcon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  color: var(--primaryBackgroundColor);
+  transform: translate(-50%, -50%);
+}

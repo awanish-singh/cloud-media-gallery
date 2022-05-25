@@ -39,7 +39,7 @@ function App() {
             <Route path="login" element={<Pages.LoginPage />} />
             <Route path="signup" element={<Pages.SignUpPage />} />
             <Route path="albums" element={<Pages.AlbumsPage />} />
-            <Route path="album/:albumId" element={<Pages.AlbumPage />} />
+            <Route path="albums/:albumId" element={<Pages.AlbumPage />} />
             <Route path="people" element={<Pages.PeoplePage />} />
             <Route path="events" element={<Pages.EventsPage />} />
             <Route path="event/:eventId" element={<Pages.EventPage />} />

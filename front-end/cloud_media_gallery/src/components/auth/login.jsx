@@ -2,8 +2,6 @@ import React, { Component, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { authActions } from "../../store/auth-slice";
-import { httpStateActions } from "../../store/httpState-slice";
-import axios from "axios";
 
 import ButtonDark from "../UI/ButtonDark";
 import useHttp from "../../hooks/http-hook";
