@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cognizant.cmg.api.users.model.CreateUserRequestModel;
 import com.cognizant.cmg.api.users.model.CreateUserResponseModel;
+import com.cognizant.cmg.api.users.model.UserResponseModel;
 import com.cognizant.cmg.api.users.services.UsersService;
 import com.cognizant.cmg.api.users.shared.UserDto;
 
@@ -46,8 +47,11 @@ public class UsersController {
 	}
 	
 	@GetMapping("/{userId}")
-	public ResponseEntity<CreateUserResponseModel> getUser(@PathVariable("userId") String userId){
+	public ResponseEntity<UserResponseModel> getUser(@PathVariable("userId") String userId){
 		
-		return ResponseEntity.status(HttpStatus.OK).body(null);
+		UserDto userDto = usersService.getUserByUserId(userId);
+		UserResponseModel userResponse = new ModelMapper().map(userDto, UserResponseModel.class);
+		
+		return ResponseEntity.status(HttpStatus.OK).body(userResponse);
 	}
 }
