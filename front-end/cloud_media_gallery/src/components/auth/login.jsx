@@ -30,7 +30,7 @@ const Login = () => {
     };
 
     sendRequest(
-      "http://localhost:8082/users-microservice/users/",
+      "http://localhost:8082/users-microservice/users/login",
       "POST",
       requestBody
     );
