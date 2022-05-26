@@ -25,7 +25,7 @@ const useHttp = (props) => {
           };
           throw new Error(response.status, { cause: response.statusText });
         } else {
-          setResHeaders(response.headers);
+          setResHeaders(Array.from(response.headers.entries()));
         }
         return response.json();
       })
