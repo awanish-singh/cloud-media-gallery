@@ -25,7 +25,7 @@ const Login = () => {
     const password = passwordRef.current.value;
 
     const requestBody = {
-      username,
+      userName: username,
       password,
     };
 
@@ -34,6 +34,8 @@ const Login = () => {
       "POST",
       requestBody
     );
+
+    console.log(requestBody);
 
     if (data) {
       dispatch(

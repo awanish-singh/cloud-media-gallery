@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { showError } from "../store/error-action";
 import { httpStateActions } from "../store/httpState-slice";
+import axios from "axios";
 
 const useHttp = (props) => {
   const [data, setdata] = useState(null);
@@ -9,13 +10,10 @@ const useHttp = (props) => {
   const sendRequest = useCallback((url, method, body, headers) => {
     dispatch(httpStateActions.send());
 
-    fetch(`${url}`, {
+    axios({
+      url: url,
       method: method,
-      body: body,
-      headers: {
-        "Content-Type": "application/json",
-        ...headers,
-      },
+      data: body,
     })
       .then((response) => {
         if (!response.ok) {
