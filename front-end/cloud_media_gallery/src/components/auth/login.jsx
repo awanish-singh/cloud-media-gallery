@@ -10,7 +10,7 @@ const Login = () => {
   const usernameRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
-  const { data, sendRequest, cleanUp } = useHttp();
+  const { data, resHeaders, sendRequest, cleanUp } = useHttp();
 
   const dispatch = useDispatch();
 
@@ -30,20 +30,20 @@ const Login = () => {
     };
 
     sendRequest(
-      "http://localhost:8082/users-microservice/users/",
+      "http://localhost:8082/users-microservice/users/login",
       "POST",
       requestBody
     );
 
     console.log(requestBody);
 
-    if (data) {
+    if (data || resHeaders) {
       dispatch(
         authActions.login({
-          token: data.token,
-          userName: data.userName,
-          fullName: data.fullName,
-          email: data.email,
+          token: resHeaders.userId,
+          userName: username,
+          fullName: username,
+          email: username,
         })
       );
 

@@ -6,6 +6,7 @@ import axios from "axios";
 
 const useHttp = (props) => {
   const [data, setdata] = useState(null);
+  const [resHeaders, setResHeaders] = useState(null);
   const dispatch = useDispatch();
   const sendRequest = useCallback((url, method, body, headers) => {
     dispatch(httpStateActions.send());
@@ -23,6 +24,8 @@ const useHttp = (props) => {
             statusText: response.statusText,
           };
           throw new Error(response.status, { cause: response.statusText });
+        } else {
+          setResHeaders(response.headers);
         }
         return response.json();
       })
@@ -49,6 +52,7 @@ const useHttp = (props) => {
 
   return {
     data,
+    resHeaders,
     sendRequest,
     cleanUp,
   };
