@@ -17,7 +17,9 @@ const useHttp = (props) => {
       data: body,
     })
       .then((response) => {
-        if (!response.ok) {
+        console.log(response);
+        // console.log(response.headers.get("userId"));
+        if (!response.statusText==="OK") {
           // console.log(response.status, response.statusText);
           const error = {
             status: response.status,
@@ -25,15 +27,14 @@ const useHttp = (props) => {
           };
           throw new Error(response.status, { cause: response.statusText });
         } else {
-          setResHeaders(Array.from(response.headers.entries()));
+          setResHeaders(response.headers);
+          setdata(response.data);
+          dispatch(httpStateActions.response());
         }
-        return response.json();
+       
+        // return response.json();
       })
-      .then((responseData) => {
-        // console.log("am i");
-        setdata(responseData);
-        dispatch(httpStateActions.response());
-      })
+      
       .catch((error) => {
         // console.log(error.message);
         // return error;

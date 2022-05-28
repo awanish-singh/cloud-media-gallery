@@ -38,13 +38,16 @@ const Login = () => {
     console.log(requestBody);
 
     if (data || resHeaders) {
+
+      console.log(resHeaders);
       dispatch(
         authActions.login({
-          token: resHeaders.userId,
+          token: username,
           userName: username,
           fullName: username,
           email: username,
         })
+
       );
 
       navigate("/", { replace: true });
