@@ -42,7 +42,7 @@ function App() {
             <Route path="albums/:albumId" element={<Pages.AlbumPage />} />
             <Route path="people" element={<Pages.PeoplePage />} />
             <Route path="events" element={<Pages.EventsPage />} />
-            <Route path="event/:eventId" element={<Pages.EventPage />} />
+            <Route path="events/:eventId" element={<Pages.EventPage />} />
             <Route path="explore" element={<Pages.ExplorePage />} />
             <Route path="media/:mediaId" element={<Pages.MediaDetailPage />} />
             <Route path="share" element={<Pages.SharePage />} />

@@ -38,7 +38,6 @@ const Login = () => {
     console.log(requestBody);
 
     if (data || resHeaders) {
-
       console.log(resHeaders);
       dispatch(
         authActions.login({
@@ -47,7 +46,6 @@ const Login = () => {
           fullName: username,
           email: username,
         })
-
       );
 
       navigate("/", { replace: true });

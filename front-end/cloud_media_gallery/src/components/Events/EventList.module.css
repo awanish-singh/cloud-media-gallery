@@ -1,0 +1,19 @@
+.eventList {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  /* max-width: max-content; */
+  /* width: 100%; */
+  /* width: max-content; */
+  list-style: none;
+  padding: 0;
+  flex-flow: wrap;
+  flex-wrap: wrap;
+}
+
+.event {
+  width: 30%;
+  /* flex: 1 1 400px; */
+  /* margin-right: 2rem; */
+  margin-bottom: 2rem;
+}

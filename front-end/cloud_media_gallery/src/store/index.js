@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import albumsSlice from "./albums-slice";
 import authSlice from "./auth-slice";
+import eventsSlice from "./events-slice";
 import homeSlice from "./home-slice";
 import httpStateSlice from "./httpState-slice";
 import notificationSlice from "./notification-slice";
@@ -13,6 +14,7 @@ const store = configureStore({
     notification: notificationSlice.reducer,
     people: peopleSlice.reducer,
     albums: albumsSlice.reducer,
+    events: eventsSlice.reducer,
     home: homeSlice.reducer,
   },
 });

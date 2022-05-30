@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import MediaCard from "../UI/MediaCard";
-import classes from "./AlbumDetail.module.css";
+import classes from "./EventDetail.module.css";
+import { MdLocationPin } from "react-icons/md";
 
-const AlbumDetail = (props) => {
+const EventDetail = (props) => {
   const navigate = useNavigate();
 
   const mediaList = props.media.map((item) => {
@@ -18,12 +19,16 @@ const AlbumDetail = (props) => {
     );
   });
   return (
-    <section className={classes.album}>
-      {/* <h6 className={classes.description}>{props.description}</h6> */}
+    <section className={classes.event}>
+      <h6 className={classes.description}>{props.description}</h6>
+      <p className={classes.location}>
+        <MdLocationPin />
+        <span>{props.location}</span>
+      </p>
       <p className={classes.date}>{new Date(props.date).toDateString()}</p>
       <ul>{mediaList}</ul>
     </section>
   );
 };
 
-export default AlbumDetail;
+export default EventDetail;
